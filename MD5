@@ -1,0 +1,15 @@
+935b6e64e88d36ce075326eaab684687 *DESCRIPTION
+3be750c01e493b8bccf2ae3cd898d506 *NAMESPACE
+7d0bc11f1eab1b967b63b0bcc0d8587a *R/experiments.R
+345f19e9566ca1d72e0c9a7a789a4ae6 *R/significance_annotation.R
+ce67a36705347e9d04731671dff68c70 *README.md
+2d4182768bcd308007fe3bb25b290997 *build/vignette.rds
+6678af2f3363be04e7dfff03bf152700 *inst/doc/intro.R
+a69a97c4e922b67fcbe466775464be63 *inst/doc/intro.Rmd
+1c426fa3e37a647c7a7f7cc50d9a4c4d *inst/doc/intro.html
+5fee2f1817917541884986e1ca58b20c *man/stat_signif.Rd
+ab0fb464f70d5fe77991df74bbb2cbc8 *tests/example.png
+6fcb24b532b3df3b887b19e29efab0e8 *tests/testthat.R
+5b67e0fca0d4fdbe8451d3ed89a2f383 *tests/testthat/Rplots.pdf
+654c2b75027927702f63eccf4565c1e6 *tests/testthat/test-significance_annotation.R
+a69a97c4e922b67fcbe466775464be63 *vignettes/intro.Rmd
