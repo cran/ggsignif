@@ -14,6 +14,9 @@ to the plot.
 Install package
 
 ```r
+install.packages("ggsignif")
+
+# Or for the latest development version
 devtools::install_github("Artjom-Metro/ggsignif")
 ```
 
@@ -29,3 +32,6 @@ ggplot(mpg, aes(class, hwy)) +
 ```
 
 ![Result Plot](https://github.com/Artjom-Metro/ggsignif/blob/master/tests/example.png)
+
+
+For further details go the [CRAN page](https://CRAN.R-project.org/package=ggsignif) and check the examples in the [vignette](https://CRAN.R-project.org/package=ggsignif/vignettes/intro.html).
