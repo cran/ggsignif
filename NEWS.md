@@ -1,3 +1,9 @@
+# Version 0.6.2
+
+- Updates visual regression tests for `vdiffr 1.0.0` release.
+
+- Removes `NOTE` about `lazyData` from CRAN's daily checks.
+
 # Version 0.6.1
 
 - @IndrajeetPatil is now a `ggsignif` author in recognition of his significant

@@ -1,16 +1,28 @@
+## ---- echo=FALSE--------------------------------------------------------------
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  message = FALSE,
+  warning = FALSE,
+  dpi = 300,
+  out.width = "100%",
+  fig.width = 6, 
+  fig.height = 5
+)
+
 ## -----------------------------------------------------------------------------
 library(ggplot2)
 library(ggsignif)
 
-## ----fig.width = 6, fig.height = 4.8------------------------------------------
+## ----simple-------------------------------------------------------------------
 ggplot(iris, aes(x = Species, y = Sepal.Length)) +
-  geom_boxplot() +
+  geom_boxplot() + # using `ggsignif` to display comparison of interest
   geom_signif(
     comparisons = list(c("versicolor", "virginica")),
     map_signif_level = TRUE
   )
 
-## ----fig.width = 6, fig.height = 4.8------------------------------------------
+## ----advanced-----------------------------------------------------------------
 dat <- data.frame(
   Group = c("S1", "S1", "S2", "S2"),
   Sub = c("A", "B", "A", "B"),
