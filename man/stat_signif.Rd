@@ -29,6 +29,7 @@ stat_signif(
   vjust = 0,
   parse = FALSE,
   manual = FALSE,
+  orientation = NA,
   ...
 )
 
@@ -58,6 +59,7 @@ geom_signif(
   vjust = 0,
   parse = FALSE,
   manual = FALSE,
+  orientation = NA,
   ...
 )
 }
@@ -122,9 +124,8 @@ Alternatively, one can provide a function that takes a numeric argument
 
 \item{y_position}{numeric vector with the y positions of the brackets}
 
-\item{xmin}{numeric vector with the positions of the left sides of the brackets}
-
-\item{xmax}{numeric vector with the positions of the right sides of the brackets}
+\item{xmin, xmax}{numeric vector with the positions of the left and right
+sides of the brackets, respectively}
 
 \item{margin_top}{numeric vector how much higher that the maximum value that
 bars start as fraction of total height}
@@ -149,6 +150,11 @@ displayed as described in \code{?plotmath}.}
 \item{manual}{Boolean flag that indicates that the parameters are provided
 with a data.frame. This option is necessary if one wants to plot different
 annotations per facet.}
+
+\item{orientation}{The orientation of the layer. The default (‘NA’)
+automatically determines the orientation from the aesthetic mapping.
+In the rare event that this fails it can be given explicitly by setting
+'orientation' to either "x" or "y"}
 
 \item{...}{other arguments passed on to \code{layer}. These are
 often aesthetics, used to set an aesthetic to a fixed value, like
