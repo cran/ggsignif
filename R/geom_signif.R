@@ -186,23 +186,29 @@ GeomSignif <- ggplot2::ggproto(
       if (coords[2, "x"] > coords[2, "xend"]) {
         extend_line <- -extend_line
       }
+
       # left vertical segment
       coords[1, "x"] <- coords[1, "x"] - extend_line
       coords[1, "xend"] <- coords[1, "xend"] - extend_line
+
       # horizontal line
       coords[2, "x"] <- coords[2, "x"] - extend_line
       coords[2, "xend"] <- coords[2, "xend"] + extend_line
+
       # right vertical segment
       coords[3, "x"] <- coords[3, "x"] + extend_line
       coords[3, "xend"] <- coords[3, "xend"] + extend_line
     }
+
     clp_flag <- inherits(coord, "CoordFlip")
+
     if (!any(flipped_aes, clp_flag) || all(flipped_aes, clp_flag)) {
       text_x <- mean(c(coords$x[1], tail(coords$xend, n = 1)))
       text_y <- max(c(coords$y, coords$yend)) + 0.01
     } else {
       text_x <- max(c(coords$x, coords$xend)) + 0.01
       text_y <- mean(c(coords$y[1], tail(coords$yend, n = 1)))
+
       if (all(coords$angle == 0)) {
         coords$angle <- 270
       }
@@ -348,12 +354,14 @@ StatSignif <- ggplot2::ggproto(
     # if(any(data$group == -1)|| any(data$group != data$x)){
     params$flipped_aes <- ggplot2::has_flipped_aes(data, params)
     data <- ggplot2::flip_data(data, params$flipped_aes)
+
     if (any(data$group == -1)) {
       stop("Can only handle data with groups that are plotted on the x-axis")
     }
 
     if (is.character(params$test)) params$test <- match.fun(params$test)
     params$complete_data <- data
+
     if (is.null(params$xmin) != is.null(params$xmax) || length(params$xmin) != length(params$xmax)) {
       stop("If xmin or xmax is set, the other one also needs to be set and they need to contain the same number of values")
     }
@@ -420,7 +428,6 @@ StatSignif <- ggplot2::ggproto(
                            tip_length,
                            manual,
                            flipped_aes = FALSE) {
-
     data <- ggplot2::flip_data(data, flipped_aes)
     scales <- ggplot2::flip_data(scales, flipped_aes)
 
@@ -489,28 +496,35 @@ StatSignif <- ggplot2::ggproto(
           } else {
             y_pos <- y_position[i] + y_scale_range * margin_top[i] + y_scale_range * step_increase[i] * (i - 1)
           }
+
           data.frame(
             x = c(min(comp[1], comp[2]), min(comp[1], comp[2]), max(comp[1], comp[2])),
             xend = c(min(comp[1], comp[2]), max(comp[1], comp[2]), max(comp[1], comp[2])),
             y = c(y_pos - y_scale_range * tip_length[(i - 1) * 2 + 1], y_pos, y_pos),
             yend = c(y_pos, y_pos, y_pos - y_scale_range * tip_length[(i - 1) * 2 + 2]),
-            annotation = test_result, group = paste(c(comp, i), collapse = "-")
+            annotation = test_result,
+            group = paste(c(comp, i), collapse = "-")
           )
         }
       })
+
       df <- do.call(rbind, result)
     } else {
       if ((data$x[1] == min(complete_data$x) & data$group[1] == min(complete_data$group)) | manual) {
         y_scale_range <- (scales$y$range$range[2] - scales$y$range$range[1])
+
         if (is.character(xmin)) {
           xmin <- scales$x$map(xmin)
         }
+
         if (is.character(xmax)) {
           xmax <- scales$x$map(xmax)
         }
+
         if ("expression" %in% class(annotations)) {
           stop("annotations must be a character vector. To use plotmath set parse=TRUE.")
         }
+
         df <- data.frame(
           x = c(xmin, xmin, xmax),
           xend = c(xmin, xmax, xmax),
